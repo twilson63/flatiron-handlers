@@ -101,4 +101,4 @@ npm test
 
 see LICENSE
 
-[1]: http://github.com/twilson63/nano/issues
+[1]: http://github.com/twilson63/flatiron-handlers/issues
