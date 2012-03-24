@@ -72,13 +72,13 @@ example: see Source
 
 # roadmap
 
-check [issues][2]
+check [issues][1]
 
 # contribute
 
 everyone is welcome to contribute. patches, bugfixes, new features
 
-1. create an [issue][2] on github so the community can comment on your idea
+1. create an [issue][1] on github so the community can comment on your idea
 2. fork `nano` in github
 3. create a new branch `git checkout -b my_branch`
 4. create tests for the changes you made
@@ -99,3 +99,5 @@ npm test
 # license
 
 see LICENSE
+
+[1]: http://github.com/twilson63/nano/issues
