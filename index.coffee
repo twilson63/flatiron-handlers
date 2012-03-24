@@ -1,5 +1,21 @@
-# # flatiron handlers
+# # flatiron-handlers
+# install
 #
+#     npm install flatiron-handlers
+#
+# usage
+#
+#     flatiron = require 'flatiron'
+#     handlers = require 'flatiron-handlers'
+#     app = flatiron.app
+#     
+#     app.use flatiron.plugins.http
+#     app.use handlers
+#     
+#     app.router.get '/', ->
+#       app.plain res, 'foo'
+#
+   
 # ## Contants
 PLAIN = 'text/plain'
 HTML = 'text/html'

@@ -13,6 +13,7 @@ methods to the flatiron http application:
 
 ``` coffeescript
 flatiron = require 'flatiron'
+handlers = require 'flatiron-handlers'
 app = flatiron.app
 
 app.use flatiron.plugins.http
