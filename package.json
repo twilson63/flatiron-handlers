@@ -1,0 +1,23 @@
+{
+  "author": "Tom Wilson <tom@jackhq.com>",
+  "name": "flatiron-handlers",
+  "description": "Response http status handlers",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/twilson63/flatiron-handlers.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "engines": {
+    "node": "0.6 || 0.7 || 0.8"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "broadway": "*",
+    "mocha": "*",
+    "should": "*"
+  },
+  "optionalDependencies": {}
+}

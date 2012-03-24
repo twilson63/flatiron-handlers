@@ -1,0 +1,85 @@
+<!DOCTYPE html>  <html> <head>   <title>index.coffee</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="docco.css" /> </head> <body>   <div id="container">     <div id="background"></div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               index.coffee             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>               <h1>flatiron handlers</h1>
+
+<h2>Contants</h2>             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">PLAIN = </span><span class="s1">&#39;text/plain&#39;</span>
+<span class="nv">HTML = </span><span class="s1">&#39;text/html&#39;</span>
+<span class="nv">APP_JSON = </span><span class="s1">&#39;application/json&#39;</span></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <h1>Public methods</h1>             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">exports.attach = </span><span class="nf">(options) -&gt;</span></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <h2>app.plain(res, text)</h2>
+
+<pre><code> Parameter  |  Type  | Required    |  Description    
+ -----------|--------|-------------|-------------    
+ res        | Object | yes         | http response object    
+ text       | string | yes         | text to send in response    
+</code></pre>
+
+<p>example</p>
+
+<pre><code>app.router.get '/', -&gt; 
+  app.text @res, 'foobar'
+
+
+app.router.get('/', function() { 
+   return app.text(this.res, 'foobar') 
+});
+</code></pre>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="vi">@plain = </span><span class="nf">(res, text) -&gt;</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span> <span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;content-type&#39;</span><span class="o">:</span> <span class="nx">PLAIN</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">end</span> <span class="nx">text</span></pre></div>             </td>           </tr>                               <tr id="section-4">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-4">&#182;</a>               </div>               <h2>app.html(res, html)</h2>
+
+<pre><code>Parameter  |  Type  | Required    |  Description    
+-----------|--------|-------------|--------------   
+res        | Object | yes         | Response Object    
+html       | string | yes         | Html to return to response   
+</code></pre>
+
+<p>example</p>
+
+<pre><code>app.router.get '/', -&gt; 
+  app.html @res, '&lt;h1&gt;foobar&lt;/h1&gt;'
+
+
+app.router.get('/', function() { 
+   return app.html(this.res, '&lt;h1&gt;foobar&lt;/h1&gt;') 
+});
+</code></pre>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="vi">@html = </span><span class="nf">(res, html) -&gt;</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span> <span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;content-type&#39;</span><span class="o">:</span> <span class="nx">HTML</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">end</span> <span class="nx">html</span></pre></div>             </td>           </tr>                               <tr id="section-5">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-5">&#182;</a>               </div>               <h2>app.redirect(res, location)</h2>
+
+<pre><code>Parameter  |  Type  | Required    |  Description    
+-----------|--------|-------------|--------------   
+res        | Object | yes         | Response Object    
+location   | string | yes         | Html to return to response   
+</code></pre>
+
+<p>example</p>
+
+<pre><code>app.router.get '/foo', -&gt; 
+  app.redirect @res, '/'
+
+
+app.router.get('/', function() { 
+   return app.redirect(this.res, '/') 
+});
+</code></pre>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="vi">@redirect = </span><span class="nf">(res, location) -&gt;</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span> <span class="mi">303</span><span class="p">,</span> <span class="nv">Location: </span><span class="nx">location</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">()</span></pre></div>             </td>           </tr>                               <tr id="section-6">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-6">&#182;</a>               </div>               <h2>app.json(res, data, status)</h2>
+
+<pre><code>Parameter  |  Type  | Required    |  Description
+-----------|--------|-------------|--------------
+res        | Object | yes         | Response Object
+data       | Object | yes         | JSON to return to response
+status     | integer| no          | status code to return with json response
+</code></pre>
+
+<p>example</p>
+
+<pre><code>app.router.get '/foo', -&gt; 
+  app.json @res, foo: 'bar'
+
+
+app.router.get('/', function() { 
+   return app.json(this.res, { foo: 'bar' })
+});
+</code></pre>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="vi">@json = </span><span class="nf">(res, data, status=200) -&gt;</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span> <span class="nx">status</span><span class="p">,</span> <span class="s1">&#39;content-type&#39;</span><span class="o">:</span> <span class="nx">APP_JSON</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">end</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<span class="nv">exports.init = </span><span class="nf">(done) -&gt;</span> <span class="nx">done</span><span class="p">()</span>
+
+</pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 
